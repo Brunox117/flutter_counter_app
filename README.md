@@ -4,4 +4,4 @@ It uses flutter state
 
 ## Getting Started
 
-To run this project you need to have flutter *** https://docs.flutter.dev/get-started/install ***
+To run this project you need to have [Flutter][https://docs.flutter.dev/get-started/install]
