@@ -8,14 +8,16 @@ class CounterFunctionsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final counter = ref.watch(counterProvider);
+    final isDarkMode = ref.watch(darkModeProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Counter functions'),
         actions: [
           IconButton(
             onPressed: (){
-
-          }, icon: const Icon(Icons.dark_mode_outlined)
+              ref.read(darkModeProvider.notifier).toggleDarkMode();
+          }, 
+          icon: isDarkMode ? const Icon(Icons.dark_mode_outlined) : const Icon(Icons.light_mode_outlined)
           ),
           IconButton(
             icon: const Icon(Icons.refresh_rounded),
