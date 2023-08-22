@@ -5,7 +5,7 @@ import '/presentation/screens/counter/counter_functions_screen.dart';
 
 
 void main(){
-  const ProviderScope(child: MyApp(),);
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget{

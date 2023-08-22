@@ -6,7 +6,7 @@ part of 'state_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$counterHash() => r'a021a5ff7b694343160c76ffe5adfbf028676c3a';
+String _$counterHash() => r'e986d6350114f37148c46db1fc9efcb6ea76547f';
 
 /// See also [Counter].
 @ProviderFor(Counter)
