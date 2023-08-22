@@ -1,4 +1,4 @@
-# A simple counter screen App 
+# A simple counter App 
 
 A simple counter that uses riverpod, and allows the user to modify the theme of the app.
 
