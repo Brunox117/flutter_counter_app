@@ -1,26 +1,26 @@
+import 'package:Counter_Screen_APP/presentation/providers/state_providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CounterFunctionsScreen extends StatefulWidget {
+class CounterFunctionsScreen extends ConsumerWidget {
   const CounterFunctionsScreen({super.key});
 
   @override
-  State<CounterFunctionsScreen> createState() => _CounterFunctionsScreenState();
-}
-
-class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
-  int clickCounter = 0;
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final counter = ref.watch(counterProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Counter functions'),
         actions: [
           IconButton(
+            onPressed: (){
+
+          }, icon: const Icon(Icons.dark_mode_outlined)
+          ),
+          IconButton(
             icon: const Icon(Icons.refresh_rounded),
             onPressed: () {
-              setState(() {
-                clickCounter = 0;
-              });
+              ref.read(counterProvider.notifier).equalToZero();
             },
           ),
         ],
@@ -30,11 +30,11 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "$clickCounter",
+              "$counter",
               style:
                   const TextStyle(fontSize: 160, fontWeight: FontWeight.w100),
             ),
-            Text('Click${clickCounter == 1 ? '' : 's'}',
+            Text('Click${counter == 1 ? '' : 's'}',
                 style: const TextStyle(fontSize: 25))
           ],
         ),
@@ -44,25 +44,24 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
         CustomButton(
           icon: Icons.plus_one_outlined,
           onPressed: () {
-            clickCounter++;
-            setState(() {});
+            ref.read(counterProvider.notifier).increaseByOne();
           },
         ),
         const SizedBox(height: 20),
         CustomButton(
           icon: Icons.exposure_minus_1_outlined,
           onPressed: () {
-            if (clickCounter == 0) return;
-            clickCounter--;
-            setState(() {});
+            if (counter == 0) return;
+            ref.read(counterProvider.notifier).decreaseByOne();
+            
           },
         ),
         const SizedBox(height: 20),
         CustomButton(
           icon: Icons.refresh_outlined,
           onPressed: () {
-            clickCounter = 0;
-            setState(() {});
+           ref.read(counterProvider.notifier).equalToZero();
+            
           },
         ),
         const SizedBox(height: 20),
