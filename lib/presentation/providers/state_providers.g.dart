@@ -34,5 +34,21 @@ final darkModeProvider = AutoDisposeNotifierProvider<DarkMode, bool>.internal(
 );
 
 typedef _$DarkMode = AutoDisposeNotifier<bool>;
+String _$selectedColorHash() => r'abbd32858dffd7c74b9979a449affa1d34ce9887';
+
+/// See also [SelectedColor].
+@ProviderFor(SelectedColor)
+final selectedColorProvider =
+    AutoDisposeNotifierProvider<SelectedColor, Color>.internal(
+  SelectedColor.new,
+  name: r'selectedColorProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$selectedColorHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$SelectedColor = AutoDisposeNotifier<Color>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member

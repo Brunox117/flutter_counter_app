@@ -16,9 +16,10 @@ class MyApp extends ConsumerWidget{
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDarkMode = ref.watch(darkModeProvider);
+    final selectedColor = ref.watch(selectedColorProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(isDarkMode: isDarkMode).getTheme(),
+      theme: AppTheme(isDarkMode: isDarkMode, selectedColor: selectedColor).getTheme(),
       home: const CounterFunctionsScreen()
     );   
   }
